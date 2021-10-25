@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>初级购物车</title>
+		<style type="text/css">
+			table {
+				width: 550px;
+				height: 200px;
+			}
+
+			table tr td {
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="book">
+			<div v-if="books.length>0">
+				<table border="1px" cellspacing="0" cellpadding="0">
+					<tr style="background-color: gainsboro;">
+						<th></th>
+						<th>书籍名称</th>
+						<th>出版日期</th>
+						<th>价格</th>
+						<th>购买数量</th>
+						<th>操作</th>
+					</tr>
+					<tr v-for="(item,index) in books">
+						<td>{{item.id}}</td>
+						<td>{{item.name}}</td>
+						<td>{{item.date}}</td>
+						<td>{{item.price|showprice}}</td>
+						<td><button @click="item.count--" :disabled="item.count<=1">-</button>
+							{{item.count}}
+							<button @click="item.count++">+</button>
+						</td>
+						<td><button @click="deltr(index)">移除</button></td>
+					</tr>
+				</table>
+				<h2>总价格：{{countprice|showprice}}</h2>
+			</div>
+			<h2 v-else>没有更多书籍</h2>
+		</div>
+
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			let book_os = new Vue({
+				el: '#book',
+				data: {
+					books: [{
+							id: 1,
+							name: '算法导论',
+							date: '2006-9',
+							price: 85,
+							count: 1
+						},
+						{
+							id: 2,
+							name: 'unix编程艺术',
+							date: '2003-5',
+							price: 95,
+							count: 1
+						},
+						{
+							id: 3,
+							name: '编程珠玑',
+							date: '2000-3',
+							price: 120,
+							count: 1
+						},
+						{
+							id: 4,
+							name: 'python编程基础',
+							date: '1998-10',
+							price: 55,
+							count: 1
+						}
+					]
+				},
+				// methods:{
+				// 	getfinleprice(price){
+				// 		return '￥'+price.toFixed(2)
+				// 	}
+				// },
+				methods: {
+					delte(index) {
+						this.books.splice(index, 1)
+					}
+				},
+				filters: {
+					showprice(price) {
+						return '￥' + price.toFixed(2)
+					}
+				}, //过滤器
+				computed: {
+					countprice() {
+						let finleprice = 0
+						// for (let i = 0; i < this.books.length; i++) {
+						// 	finleprice += this.books[i].count * this.books[i].price
+						// }
+
+
+						// for(let i in this.books){
+						// 	const book= this.books[i]
+						// 	finleprice += book.count * book.price
+						// }
+
+						// for (let item of this.books) {
+						// 	finleprice += item.price * item.count
+						// }
+						// return finleprice
+						
+						// 高阶函数 reduce 对数组的内容进行汇总
+						let finprice=this.books.reduce(function(prevprice,book){
+							return book.price*book.count+prevprice
+						},0)
+						 return finprice
+					}
+				}
+			})
+		</script>
+		<script type="text/javascript">
+			// 高阶函数 filter的使用
+			let nums=[12,45,67,89,123,367,289]
+			let newnums=nums.filter(function(n){
+				 return n<100
+				 // 只返回bool值(true false)
+			})
+			console.log(newnums)
+			// map函数
+			let new2nums=newnums.map(function(n){
+				return n*2
+			})
+			console.log(new2nums)
+		</script>
+	</body>
+</html>

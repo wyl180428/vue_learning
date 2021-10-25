@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn ref='aaa'></cpn>
+			<button type="button" @click="btnclick">点击</button>
+		</div>
+		<template id='cpn'>
+			<h1>很爱很爱你</h1>
+		</template>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:'#app',
+				data:{
+					message:'Hello Vuejs'
+				},
+				methods:{
+					btnclick(){
+						// $children操纵子组件
+						console.log(this.$children)
+						this.$children[0].showMessage()
+						console.log(this.$children[0].name)
+						// $refs读取子组件
+						console.log(this.$refs.aaa.name)
+					}
+				},
+				components:{
+					cpn:{
+						template:'#cpn',
+						data(){
+							return{
+								name:'我是子组件'
+							}
+						},
+						methods:{
+							showMessage(){
+								console.log('12345')
+							}
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

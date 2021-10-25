@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计数器</title>
+</head>
+<body>
+    <div id="app">
+        <h2>当前计数:{{counter}}</h2>
+        <button v-on:click="counter++">+</button>
+        <button v-on:click="counter--">-</button>
+    </div>
+    <div id="vm">
+        <h2>当前计数:{{counter}}</h2>
+        <button v-on:click="add">+</button>
+        <button v-on:click="sub">-</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const app=new Vue({
+            // el:'#app',
+            el:document.getElementById('app'),
+            data:{
+                counter:0
+            }
+        })
+        const vm = new Vue({
+            el:'#vm',
+            data:{
+                counter:0
+            },
+            methods:{
+                add:function(){
+                    console.log('add被点击')
+                },
+                sub:function(){
+                    console.log('sub被点击')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

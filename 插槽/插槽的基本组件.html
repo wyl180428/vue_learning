@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn><button>案例</button></cpn>
+			<cpn></cpn>
+			<cpn></cpn>
+		</div>
+		<template id='cpn'>
+			<div>
+				<h1>组件1</h1>
+				<!-- slot插槽改变模块内的元素 -->
+				<!-- <slot></slot> -->
+				<!-- 可以给其默认值 -->
+				<slot><p>我爱中国</p></slot>
+			</div>
+		</template>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:'#app',
+				data:{
+					message:'Hello Vuejs'
+				},
+				components:{
+					cpn:{
+						template:'#cpn',
+						
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

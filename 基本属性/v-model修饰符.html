@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 1.修饰符：lazy 聚焦消失或回车时同步-->
+			<input type="text" name="" id="" value="" v-model.lazy="message" />
+			<h2>{{message}}</h2>
+			<!-- 2.修饰符 ：number确定其为数字类型 -->
+			<input type="number" name="" id="" value="" v-model.number="age" />
+			<h2>{{age}}</h2>
+			<!-- 3.修饰符：trim 去掉空格-->
+			<input type="text" name="" id="" value=""  v-model.trim="name"/>
+			<h2>{{name}}</h2>
+		</div>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					message: '',
+					age: '',
+					name:''
+				}
+			})
+		</script>
+	</body>
+</html>

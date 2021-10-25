@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn @itemclick=cpnclick></cpn>
+		</div>
+		<!-- 组件的模板 -->
+		<template id="cpn">
+			<div>
+				<!-- <h1>{{cmessage}}</h1>
+				<p>{{cmoveis}}</p> -->
+				<button type="button" v-for="item in categories" @click="btnclick(item)">{{item.name}}</button>
+			</div>
+		</template>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		const cpn={
+			template:'#cpn',
+			// 父传子
+			// props:['cmoveis','cmessage'],
+			// props:{
+				// 1.类型设置
+				// comvies:Array,
+				// cmessage:String
+			// 	cmessage:{
+			// 		type:String,
+			// 		defult:'aaaaaaa',
+			// 		required:true
+			// 	}
+			// }
+			
+			// 子传父
+			data(){
+				return{
+					categories:[
+						{id:1,name:'aaa'},
+						{id:2,name:'bbb'},
+						{id:3,name:'ccc'},
+						{id:4,name:'ddd'}
+					]
+				}
+			},
+			methods:{
+				btnclick(item){
+					// 自定义事件
+					this.$emit('itemclick',item)
+				}
+			}
+		}
+			var vm=new Vue({
+				el:'#app',
+				data:{
+					message:'Hello Vuejs',
+					moveis:['12','31','45']
+				},
+				components:{
+					cpn
+				},
+				methods:{
+					cpnclick(item){
+						console.log(item)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

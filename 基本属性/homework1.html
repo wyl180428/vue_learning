@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.active {
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="(item,index) in movies" :class='{active:intindex===index}' @click="getred(index)">{{item}}</li>
+			</ul>
+		</div>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					movies: ['星际穿越', '大话西游', '功夫', '盗梦空间','流浪地球'],
+					active: false,
+					intindex:0
+				},
+				methods: {
+					getred: function(index) {
+						this.intindex=index
+					}
+				},
+			})
+		</script>
+	</body>
+</html>

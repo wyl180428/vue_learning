@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn1></cpn1>
+		</div>
+		<template id='cpn'>
+			<div>
+				<h1>{{title}}</h1>
+				<p>sdwdwdw</p>
+			</div>
+		</template>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.component('cpn1', {
+				template: '#cpn',
+				data() {
+					return {
+						title: 'abc'
+					}
+				}
+			})
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs'
+				}
+			})
+		</script>
+	</body>
+</html>

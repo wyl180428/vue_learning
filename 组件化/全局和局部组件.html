@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn></cpn>
+		</div>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		const cpnC=Vue.extend({
+			template:`<div>
+					<h2>标题</h2>
+					<p>哈哈</p>
+					<p>呵呵</p>
+					</div>`
+		})
+		// 注册的组件为全局组件
+		// Vue.component('my-cpn',cpnC)
+			var vm=new Vue({
+				el:'#app',
+				data:{
+					message:'Hello Vuejs'
+				},
+				// 此操作为局部组件
+				components:{
+					// cpn为组件标签名
+					cpn:cpnC
+				}
+			})
+			vm.message='123'
+		</script>
+	</body>
+</html>

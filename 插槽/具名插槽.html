@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn><span slot='left'>wdnmd</span><button type="button" slot='center'>按钮</button></cpn>
+		</div>
+		<template id='cpn'>
+			<div>
+				<!-- 具名插槽 -->
+				<slot name="left"><span>左边</span></slot>
+				<slot name='center'><span>中间</span></slot>
+				<slot name='right'><span>右边</span></slot>
+			</div>
+		</template>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vuejs'
+				},
+				components: {
+					cpn: {
+						template: '#cpn'
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

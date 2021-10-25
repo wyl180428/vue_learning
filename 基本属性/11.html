@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- v-show和v-if的区别 -->
+		<!-- v-if的条件为false时，不会出现在dom中
+		v-show则是把style设置成display为none -->
+		<div id="app">
+			<ul>
+				<li v-for="(name,index) in names">{{index}}--{{name}}</li>
+			</ul>
+		</div>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			let app = new Vue({
+				el:'#app',
+				data:{
+					names:['wyl',18,188,'男']
+				},
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-on的修饰符</title>
+	</head>
+	<body>
+		<!-- .stop解决冒泡问题 -->
+		<div id="app" @click="divClick">
+			<button @click.stop="btnClick">按钮1</button>
+		<!-- .prevent解决默认事件 -->
+		<form action="baidu">
+			<input type="submit" value="提交" @click.prevent="submitClick"/>
+		</form>
+		<!-- 监听键盘按键 -->
+			<input type="password" name="" @keyup.enter="keyup" />
+		<!-- .once只触发一次 -->
+		<button @click.once="btnClick1">按钮1</button>
+		</div>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			const app = new Vue({
+				el:'#app',
+				data:{},
+				methods:{
+					btnClick(){
+						console.log('123')
+					},
+					divClick(){
+						console.log('456')
+					},
+					submitClick(){
+						console.log('789')
+					},
+					keyup(){
+						console.log('keyup')
+					},
+					btnClick1:function(){
+						console.log('btnClick1')
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,17 @@
+计算属性的本质：fullname：{set(),get()}
+计算属性与methods的对比
+事件监听
+事件监听的基本使用
+参数问题
+修饰符
+条件判断(v-if/v-else-if/v-else)
+登录案例
+v-show
+循环遍历
+遍历数组、遍历对象、数组的那些方法是响应式的
+作业完成
+书籍案例
+v-model的使用
+v-model的基本使用
+v-model的radio/checkobx/select
+修饰符

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.active{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- <img v-bind:src="imgurl">  v-bind绑定属性--> 
+			<!-- v-bind的语法糖为: -->
+			<a :href="aurl">百度一下</a>
+		<!-- v-bind动态绑定class -->
+			<h2 :class="{active: active,line: line}">{{message}}</h2>
+			<h2 :class="getclasss()">{{message}}</h2>
+			<button v-on:click=onclick>点击</button>
+		</div>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			let app = new Vue({
+				el:'#app',
+				data:{
+					// imgurl:'https://pic2.zhimg.com/50/aa207227ea49178f5952d888afe1348b_720w.jpg?source=1940ef5c',
+					aurl:'http://www.baidu.com',
+					test:'test',
+					active:true,
+					line:false,
+					message:'hello world'
+				},
+				methods:{
+					onclick :function(){
+						this.active=!this.active
+					},
+					getclasss:function(){
+						return {active: this.active,line: this.line}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
